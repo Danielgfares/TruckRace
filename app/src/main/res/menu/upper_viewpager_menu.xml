@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/price"
+        android:title="@string/sort_price"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/most_recent"
+        android:title="@string/sort_most_recent"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/registration_year"
+        android:title="@string/sort_registration_year"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/mileag"
+        android:title="@string/sort_mileag"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/fule_consumption"
+        android:title="@string/sort_full_consumption"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/vehicle_weight"
+        android:title="@string/sort_vehicle_weight"
+        app:showAsAction="never"/>
+</menu>

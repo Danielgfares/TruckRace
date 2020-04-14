@@ -1,0 +1,3 @@
+# autoScoop
+
+this is readme

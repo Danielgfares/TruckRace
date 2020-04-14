@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <item android:drawable="@color/whiteColor" />
+    <item>
+        <bitmap
+            android:gravity="fill"
+            android:src="@drawable/splash_screen_screen_design"/>
+    </item>
+</layer-list>
