@@ -1,4 +1,4 @@
-package daniel.essa.project2020.auto_scoop.ui.login
+package daniel.essa.project2020.auto_scoop.ui.signuser
 
 /**
  * User details post authentication that is exposed to the UI

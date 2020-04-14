@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -17,13 +15,14 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import daniel.essa.project2020.auto_scoop.MySingleton
 import daniel.essa.project2020.auto_scoop.R
-import daniel.essa.project2020.auto_scoop.ui.login.LoggedInUserView
-import daniel.essa.project2020.auto_scoop.ui.login.LoginViewModel
-import daniel.essa.project2020.auto_scoop.ui.login.LoginViewModelFactory
+import daniel.essa.project2020.auto_scoop.afterTextChanged
+import daniel.essa.project2020.auto_scoop.ui.signuser.LoggedInUserView
+import daniel.essa.project2020.auto_scoop.ui.signuser.MasterSignViewModel
+import daniel.essa.project2020.auto_scoop.ui.signuser.MasterSignViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginViewModel: LoginViewModel
+    private lateinit var masterSignViewModel: MasterSignViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,12 +34,12 @@ class LoginActivity : AppCompatActivity() {
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-        loginViewModel = ViewModelProvider(this,
-            LoginViewModelFactory()
+        masterSignViewModel = ViewModelProvider(this,
+            MasterSignViewModelFactory()
         )
-            .get(LoginViewModel::class.java)
+            .get(MasterSignViewModel::class.java)
 
-        loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
+        masterSignViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
             // disable login button unless both username / password is valid
@@ -54,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        loginViewModel.loginResult.observe(this@LoginActivity, Observer {
+        masterSignViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
 
             loading.visibility = View.GONE
@@ -71,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
         })
 
         username.afterTextChanged {
-            loginViewModel.loginDataChanged(
+            masterSignViewModel.loginDataChanged(
                 username.text.toString(),
                 password.text.toString()
             )
@@ -79,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
 
         password.apply {
             afterTextChanged {
-                loginViewModel.loginDataChanged(
+                masterSignViewModel.loginDataChanged(
                     username.text.toString(),
                     password.text.toString()
                 )
@@ -88,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
             setOnEditorActionListener { _, actionId, _ ->
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
-                        loginViewModel.login(
+                        masterSignViewModel.login(
                             username.text.toString(),
                             password.text.toString()
                         )
@@ -98,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
 
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
+                masterSignViewModel.login(username.text.toString(), password.text.toString())
             }
         }
     }
@@ -126,21 +125,4 @@ class LoginActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
-}
-
-/**
- * Extension function to simplify setting an afterTextChanged action to EditText components.
- */
-fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(editable: Editable?) {
-            afterTextChanged.invoke(editable.toString())
-        }
-
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-    })
-
-
 }

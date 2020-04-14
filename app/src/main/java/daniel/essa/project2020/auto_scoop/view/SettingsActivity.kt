@@ -9,7 +9,7 @@ class SettingsActivity : MainViewClass() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.settings_activity)
+        setContentView(R.layout.activity_settings)
         // settings menu action bar
         myMenuSettings()
         // settings toolbar

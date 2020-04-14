@@ -1,7 +1,6 @@
 package daniel.essa.project2020.auto_scoop.ac
 
 import android.content.Intent
-import android.os.Handler
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -12,9 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import daniel.essa.project2020.auto_scoop.*
 import daniel.essa.project2020.auto_scoop.ic.NaviInterface
 import daniel.essa.project2020.auto_scoop.ic.ViewInterface
-import daniel.essa.project2020.auto_scoop.view.LoginActivity
-import daniel.essa.project2020.auto_scoop.view.AboutActivity
-import daniel.essa.project2020.auto_scoop.view.SettingsActivity
+import daniel.essa.project2020.auto_scoop.view.*
 
 abstract class MainViewClass : AppCompatActivity(),
     ViewInterface, NaviInterface {
@@ -76,10 +73,10 @@ abstract class MainViewClass : AppCompatActivity(),
     }
     private fun menunotloggedin(item: MenuItem):Boolean {
         return when (item.itemId) {
-            R.id.signup -> {
+            R.id.register_menu -> {
                 // TODO if logged in you will not see this, if you need to sign up it will take to sign up page
                 // for it will take you to the log in page or sign in page
-                onLoginPressed()
+                onRegisterPressed()
                 true
             }
             R.id.login -> {
@@ -155,6 +152,17 @@ abstract class MainViewClass : AppCompatActivity(),
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
+    /**
+     *
+     *
+     *
+     *
+     */
+    private fun onRegisterPressed(){
+        val intent = Intent(this, RegisterActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
 
     /**
      *
@@ -177,5 +185,20 @@ abstract class MainViewClass : AppCompatActivity(),
             AboutActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
+    }
+    /**
+     *
+     *
+     *
+     */
+    private fun onLogoutPressed(){
+
+        if(MySingleton.getLoggedin()){
+            val intent = Intent(this,
+                MainViewActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 }

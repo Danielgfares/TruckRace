@@ -141,5 +141,17 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="prompt_company_name">Company name</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_nick_name">Nick name</string>
+    <string name="action_sign_up_short">Register</string>
+    <string name="action_Register">Register</string>
+    <string name="prompt_phone_number">Phone</string>
+    <string name="prompt_location">Location</string>
+    <string name="prompt_birth_date">Birth date</string>
+    <string name="prompt_password_confirm">Confirm password</string>
+    <string name="title_activity_register">Confirm password</string>
+    <string name="logout"> Logout</string>
+
 
 </resources>

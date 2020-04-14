@@ -1,4 +1,4 @@
-package daniel.essa.project2020.auto_scoop.ui.login
+package daniel.essa.project2020.auto_scoop.ui.signuser
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -9,12 +9,12 @@ import daniel.essa.project2020.auto_scoop.data.LoginRepository
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
  */
-class LoginViewModelFactory : ViewModelProvider.Factory {
+class MasterSignViewModelFactory : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel(
+        if (modelClass.isAssignableFrom(MasterSignViewModel::class.java)) {
+            return MasterSignViewModel(
                 loginRepository = LoginRepository(
                     dataSource = LoginDataSource()
                 )

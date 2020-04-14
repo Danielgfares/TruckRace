@@ -42,6 +42,11 @@
             android:label="@string/title_activity_login"
             android:noHistory="true" />
 
+        <activity
+            android:name=".view.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:noHistory="true" />
+
     </application>
 
 </manifest>
