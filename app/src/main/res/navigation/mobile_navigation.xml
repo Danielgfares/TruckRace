@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="daniel.essa.project2020.auto_scoop.ui.home.HomeFragment"
+        android:name="daniel.essa.project2020.track_race.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="daniel.essa.project2020.auto_scoop.ui.favorite.FavoriteFragment"
+        android:name="daniel.essa.project2020.track_race.ui.favorite.FavoriteFragment"
         android:label="@string/title_favorite"
         tools:layout="@layout/fragment_favorite" />
 
     <fragment
         android:id="@+id/navigation_offers"
-        android:name="daniel.essa.project2020.auto_scoop.ui.offers.OffersFragment"
+        android:name="daniel.essa.project2020.track_race.ui.offers.OffersFragment"
         android:label="@string/title_offers"
         tools:layout="@layout/fragment_offers" />
 </navigation>
